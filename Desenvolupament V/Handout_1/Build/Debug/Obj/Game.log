@@ -1,0 +1,13 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  Main.cpp
+  App.cpp
+  Audio.cpp
+  Input.cpp
+  Scene.cpp
+  Render.cpp
+  Textures.cpp
+  Window.cpp
+  Log.cpp
+  pugixml.cpp
+  Generating Code...
+  Game.vcxproj -> C:\Users\bielrg\Desktop\GitHub_BielRabasa\DesenvolupamentV\Desenvolupament V\Handout_1\Build\Debug\Game.exe
