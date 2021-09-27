@@ -67,7 +67,13 @@ bool App::Awake()
 
 	if(ret == true)
 	{
-		title.create(""); // L01: TODO 4: Read the title from the config file
+		
+		
+		// L01: TODO 4: Read the title from the config file
+		title.create(configFile.child("config").child("app").child("title").child_value());
+		//title.create(configFile.first_child().first_child().first_child().child_value());
+		//
+		
 		win->SetTitle(title.GetString());
 
 		ListItem<Module*>* item;
@@ -75,11 +81,15 @@ bool App::Awake()
 
 		while(item != NULL && ret == true)
 		{
-			// L01: TODO 5: Add a new argument to the Awake method to receive a pointer to an xml node.
+			// L01: DONE 5: Add a new argument to the Awake method to receive a pointer to an xml node.
 			// If the section with the module name exists in config.xml, fill the pointer with the valid xml_node
 			// that can be used to read all variables for that module.
 			// Send nullptr if the node does not exist in config.xml
+			
 			pugi::xml_node node;
+		
+			node = configFile.child("config").child(item->data->name.GetString());
+
 			ret = item->data->Awake(node);
 			item = item->next;
 		}
@@ -132,11 +142,11 @@ bool App::LoadConfig()
 	bool ret = false;
 
 	// L01: TODO 3: Load config.xml file using load_file() method from the xml_document class
-	pugi::xml_parse_result result = configFile.load_file("config.xml"); //CARREGUEM EL DOCUMENT en la variable 'configFile'
+	pugi::xml_parse_result parseresult = configFile.load_file("config.xml"); //CARREGUEM EL DOCUMENT en la variable 'configFile'
 
 	// L01: TODO 3: Check result for loading errors
-	if (result == NULL) {
-		LOG("Error loading XML %s", result.description());/*Roger ets un feo*/
+	if (parseresult == NULL) {
+		LOG("Error loading XML %s", parseresult.description());
 	}
 	else {
 		ret = true;

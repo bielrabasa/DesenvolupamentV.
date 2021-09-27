@@ -55,6 +55,8 @@ bool Audio::Awake(pugi::xml_node& config)
 		ret = true;
 	}
 
+	Mix_Volume(-1, config.child("fx").attribute("volume").as_int());
+
 	return ret;
 }
 
